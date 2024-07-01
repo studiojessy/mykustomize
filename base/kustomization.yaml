@@ -1,11 +1,15 @@
-namespace: prod
-resources:
-  - ../../base
-  - namespace.yaml
-  - configmap.yaml
-
-images:
-  - name: gcr.io/heptio-images/ks-guestbook-demo
-    newTag: "0.2"
-
-namePrefix: prod-
+apiVersion: v1
+kind: Service
+metadata:
+  name: guestbook
+  labels:
+    app: guestbook
+spec:
+  type: NodePort
+  selector:
+    app: guestbook
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30001

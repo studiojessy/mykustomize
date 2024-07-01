@@ -1,4 +1,7 @@
 apiVersion: v1
-kind: Namespace
+kind: ConfigMap
 metadata:
-  name: prod
+  name: guestbook-config
+  namespace: prod
+data:
+  environment: production
